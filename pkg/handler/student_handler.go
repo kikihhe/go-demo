@@ -22,16 +22,16 @@ func NewStudentHandler() StudentHandler {
 }
 
 func (s *studentHandler) GetById(context *gin.Context) {
-	var result result.Result
+	r := result.NewResult(context)
 	student, err := s.studentService.GetStudentById(context)
 	if err != nil {
-		result.FailMessage(err.Error())
+		r.FailMessage(err.Error())
 	} else {
-		result.SuccessData(student)
+		r.SuccessData(student)
 	}
 }
 
 func (s *studentHandler) Ping(context *gin.Context) {
-	var result result.Result
-	result.Success("ping成功", nil)
+	r := result.NewResult(context)
+	r.Success("ping成功", nil)
 }

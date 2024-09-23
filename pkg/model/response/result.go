@@ -13,9 +13,12 @@ type Result struct {
 	context *gin.Context
 }
 
+func NewResult(context *gin.Context) *Result {
+	return &Result{context: context}
+}
 func (r *Result) Common(code int, message string, data interface{}) {
 	res := ResultContent{message, data}
-	r.context.JSON(code, res)
+	r.context.JSON(code, gin.H{"message": res.message, "data": res.data})
 }
 
 func (r *Result) Success(message string, data interface{}) {

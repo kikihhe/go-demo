@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"go-demo/pkg/dao"
 	"go-demo/pkg/model/domain"
+	"strconv"
 )
 
 type StudentService struct {
@@ -17,8 +18,10 @@ func NewStudentService() *StudentService {
 }
 
 func (s *StudentService) GetStudentById(c *gin.Context) (*domain.Student, error) {
-	id := c.GetInt64("id")
-	student, err := dao.NewStudentDao().GetById(id)
+
+	idString := c.Query("id")
+	id, _ := strconv.Atoi(idString)
+	student, err := dao.NewStudentDao().GetById(int64(id))
 	if err != nil {
 		return nil, err
 	}

@@ -6,6 +6,6 @@ import (
 )
 
 func studentRouter(group *gin.RouterGroup, h handler.StudentHandler) {
-	group.GET("/user/getById", h.GetById)
-	group.GET("/user/ping", h.Ping)
+	group.GET("/getById", h.GetById)
+	group.GET("/ping", h.Ping)
 }
