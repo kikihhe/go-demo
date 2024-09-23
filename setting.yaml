@@ -1,5 +1,5 @@
 postgresql:
-  dsn: "host=localhost user=iaas_db_user password=iaas_db_pass dbname=iaas_db port=5432 sslmode=disable"
+  dsn: "host=192.168.160.63 user=iaas_db_user password=iaas_db_pass dbname=iaas_db port=5432 sslmode=disable"
 
 
 server:

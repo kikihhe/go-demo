@@ -8,6 +8,7 @@ import (
 
 type StudentHandler interface {
 	GetById(context *gin.Context)
+	Ping(context *gin.Context)
 }
 
 type studentHandler struct {
@@ -28,4 +29,9 @@ func (s *studentHandler) GetById(context *gin.Context) {
 	} else {
 		result.SuccessData(student)
 	}
+}
+
+func (s *studentHandler) Ping(context *gin.Context) {
+	var result result.Result
+	result.Success("ping成功", nil)
 }
